@@ -29,12 +29,12 @@ const guardians = {
 function generatePlaylist(guardians, songs) {
     // Use the map() function to create playlists for each Guardian
     // Your code here
-    const playlistsDiv =document.getElementById('playlists');
+    const playlistsDiv = document.getElementById('playlists');
 
     // USE MAP TO ITERATE OVER GUARDIANS
     Object.keys(guardians).map(guardian => {
-        const preffedGenre = guardians[guardian];
-        const playlist = songs.filter(song => song.genre === preffedGenre);
+        const preferredGenre = guardians[guardian];
+        const playlist = songs.filter(song => song.genre === preferredGenre);
 
         //CREATE PLAYLIST DIV
         const playlistDiv = document.createElement('div');
@@ -43,11 +43,31 @@ function generatePlaylist(guardians, songs) {
         // ADD GUARDIAN'S NAME AS THE PLAYLIST TITLE
         const guardianTitle = document.createElement('h2');
         guardianTitle.textContent = `${guardian}'s Playlist`;
-        playlist.appendChild(guardianTitle);
+        playlistDiv.appendChild(guardianTitle);
+
+
+        // USE MAP TO CREATE SONG ELEMENTS
+        const songElements = playlist.map(song => {
+            const songDiv = document.createElement('div');
+            songDiv.classList.add('song');
+
+            const songTitle = document.createElement('a');
+            songTitle.classList.add('song-title');
+            songTitle.textContent = song.title;
+            songTitle.href = "#"; 
+            songDiv.appendChild(songTitle);
+
+            const artist = document.createElement('p');
+            artist.textContent = `by ${song.artist}`;
+            songDiv.appendChild(artist);
+
+            return songDiv; // RETURN THE SONG DIV
+        });
     })
 }
 
 // Call generatePlaylist and display the playlists for each Guardian
 generatePlaylist(guardians, songs);
 
+ 
 
