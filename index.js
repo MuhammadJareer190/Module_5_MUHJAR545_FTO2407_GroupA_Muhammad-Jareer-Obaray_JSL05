@@ -63,6 +63,11 @@ function generatePlaylist(guardians, songs) {
 
             return songDiv; // RETURN THE SONG DIV
         });
+         // APPEND EACH SONG ELEMENT TO THE playlistDiv
+         songElements.forEach(songDiv => playlistDiv.appendChild(songDiv));
+
+         // ADD THE PLAYLIST TO THE MAIN PLAYLIST DIV
+         playlistsDiv.appendChild(playlistDiv);
     })
 }
 
