@@ -35,6 +35,10 @@ function generatePlaylist(guardians, songs) {
     Object.keys(guardians).map(guardian => {
         const preffedGenre = guardians[guardian];
         const playlist = songs.filter(song => song.genre === preffedGenre);
+
+        //CREATE PLAYLIST DIV
+        const playlistDiv = document.createElement('div');
+        playlistDiv.classList.add('playlist');
     })
 }
 
